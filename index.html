@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#151515" />
+    <meta
+      name="description"
+      content="Sanitised, interactive demonstrations of connected commerce and operational systems by Drabyna."
+    />
+    <meta property="og:title" content="Drabyna Systems Showcase" />
+    <meta
+      property="og:description"
+      content="Connected systems, shown clearly. Public patterns. Synthetic data only."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://drabyna.github.io/drabyna-systems-showcase/og.png"
+    />
+    <title>Drabyna Systems Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to demonstrations</a>
+    <header class="site-header">
+      <a class="brand" href="https://drabyna.com/" aria-label="Drabyna home">
+        DRABYNA<span>.</span>
+      </a>
+      <p>Systems showcase</p>
+      <a class="return-link" href="https://drabyna.com/">
+        Portfolio <span class="arrow" aria-hidden="true">↗︎</span>
+      </a>
+    </header>
+
+    <main id="main">
+      <section class="hero shell">
+        <p class="eyebrow">Public patterns · Synthetic data</p>
+        <h1>Connected systems,<br />shown clearly.</h1>
+        <div class="hero-copy">
+          <p>
+            Small, runnable demonstrations of the operational thinking behind
+            commerce, warehouse and customer-service systems.
+          </p>
+          <a href="#api-flow" class="primary-link">
+            Run the first workflow <span class="arrow" aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="proof-rail" aria-label="Showcase safeguards">
+        <div><strong>04</strong><span>connected workflows</span></div>
+        <div><strong>00</strong><span>production records</span></div>
+        <div><strong>100%</strong><span>synthetic data</span></div>
+        <div><strong>OPEN</strong><span>browser runnable</span></div>
+      </section>
+
+      <section class="demo-section shell" id="api-flow" aria-labelledby="api-title">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">01 · API orchestration</p>
+            <h2 id="api-title">One order. Four connected decisions.</h2>
+          </div>
+          <p>
+            A safe mock workflow showing how a commerce event can be validated,
+            released to a warehouse and translated into a useful customer update.
+          </p>
+        </div>
+
+        <div class="system-panel api-panel">
+          <div class="flow-grid" aria-label="Connected API workflow">
+            <article class="flow-node is-ready" data-flow-node="0">
+              <span>01</span>
+              <h3>Commerce</h3>
+              <p>Order accepted</p>
+            </article>
+            <div class="flow-connector" aria-hidden="true"></div>
+            <article class="flow-node" data-flow-node="1">
+              <span>02</span>
+              <h3>Validation</h3>
+              <p>Stock + payment</p>
+            </article>
+            <div class="flow-connector" aria-hidden="true"></div>
+            <article class="flow-node" data-flow-node="2">
+              <span>03</span>
+              <h3>Warehouse</h3>
+              <p>Pack released</p>
+            </article>
+            <div class="flow-connector" aria-hidden="true"></div>
+            <article class="flow-node" data-flow-node="3">
+              <span>04</span>
+              <h3>Messaging</h3>
+              <p>Customer informed</p>
+            </article>
+          </div>
+
+          <div class="control-row">
+            <button class="action-button" id="run-flow" type="button">Run connection</button>
+            <p class="system-status" id="flow-status" aria-live="polite">Ready for a synthetic order.</p>
+          </div>
+          <ol class="event-log" id="event-log" aria-label="API event log">
+            <li><time>READY</time><span>No production endpoint is connected.</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="demo-section shell" id="packing-evidence" aria-labelledby="packing-title">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">02 · Packing evidence</p>
+            <h2 id="packing-title">Every scan creates a usable record.</h2>
+          </div>
+          <p>
+            Scan three sample garments. The order is released only when the
+            expected quantity and recorded evidence agree.
+          </p>
+        </div>
+
+        <div class="split-demo">
+          <div class="system-panel packing-panel">
+            <div class="order-heading">
+              <div>
+                <p class="mono-label">SAMPLE ORDER</p>
+                <h3>#DRB-1042</h3>
+              </div>
+              <strong id="scan-count">0/3</strong>
+            </div>
+            <ul class="scan-list" id="scan-list">
+              <li data-scan-item><span>Core tee · Black · M</span><b>WAITING</b></li>
+              <li data-scan-item><span>Core tee · White · M</span><b>WAITING</b></li>
+              <li data-scan-item><span>Brief · Charcoal · M</span><b>WAITING</b></li>
+            </ul>
+            <div class="control-row">
+              <button class="action-button" id="scan-item" type="button">Scan next barcode</button>
+              <button class="text-button" id="reset-scan" type="button">Reset</button>
+            </div>
+          </div>
+
+          <aside class="evidence-card" aria-live="polite">
+            <p class="mono-label">CUSTOMER SERVICE RECORD</p>
+            <h3 id="evidence-title">Evidence not yet complete.</h3>
+            <p id="evidence-copy">
+              Each accepted barcode will be linked to this sample order.
+            </p>
+            <div class="evidence-stamp" id="evidence-stamp">AWAITING 3 VERIFIED SCANS</div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="demo-section shell" id="warehouse-pulse" aria-labelledby="pulse-title">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">03 · Decision KPIs</p>
+            <h2 id="pulse-title">The useful numbers move with the work.</h2>
+          </div>
+          <p>
+            A completed pack updates the periods that matter. No dashboard
+            theatre—only the few figures needed to understand the operation.
+          </p>
+        </div>
+
+        <div class="pulse-screen">
+          <div class="pulse-heading">
+            <div>
+              <p class="mono-label">WAREHOUSE PULSE</p>
+              <h3 id="pulse-message">Waiting for a completed pack</h3>
+            </div>
+            <span class="live-dot" aria-label="System online"></span>
+          </div>
+          <div class="pulse-table" role="table" aria-label="Synthetic warehouse KPI totals">
+            <div class="pulse-row pulse-labels" role="row">
+              <span role="columnheader">Period</span><span role="columnheader">Orders</span><span role="columnheader">SKUs</span>
+            </div>
+            <div class="pulse-row" role="row"><span>Today</span><strong data-order-total="127">127</strong><strong data-sku-total="382">382</strong></div>
+            <div class="pulse-row" role="row"><span>Week</span><strong data-order-total="684">684</strong><strong data-sku-total="2051">2,051</strong></div>
+            <div class="pulse-row" role="row"><span>Month</span><strong data-order-total="2941">2,941</strong><strong data-sku-total="8827">8,827</strong></div>
+            <div class="pulse-row" role="row"><span>Year</span><strong data-order-total="31408">31,408</strong><strong data-sku-total="94224">94,224</strong></div>
+          </div>
+          <div class="control-row">
+            <button class="action-button light" id="complete-pack" type="button">Complete one sample pack</button>
+            <p id="pulse-status" aria-live="polite">This adds one order and three verified SKUs.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section shell" id="returns-cycle" aria-labelledby="returns-title">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">04 · Returns automation</p>
+            <h2 id="returns-title">A complete exchange without the chase.</h2>
+          </div>
+          <p>
+            Move a synthetic return through eligibility, label creation,
+            warehouse receipt, exchange release and customer notification.
+          </p>
+        </div>
+
+        <div class="system-panel return-panel">
+          <div class="return-summary">
+            <div>
+              <p class="mono-label">SAMPLE RETURN</p>
+              <h3>#RET-083</h3>
+            </div>
+            <span id="return-progress">1 of 5</span>
+          </div>
+          <ol class="return-steps" id="return-steps">
+            <li class="is-active"><span>01</span><div><b>Request received</b><small>Size exchange · synthetic customer</small></div></li>
+            <li><span>02</span><div><b>Eligibility confirmed</b><small>Policy checked automatically</small></div></li>
+            <li><span>03</span><div><b>Return received</b><small>Warehouse scan matched</small></div></li>
+            <li><span>04</span><div><b>Exchange released</b><small>Replacement inventory reserved</small></div></li>
+            <li><span>05</span><div><b>Customer updated</b><small>Tracking message prepared</small></div></li>
+          </ol>
+          <div class="control-row">
+            <button class="action-button" id="advance-return" type="button">Advance workflow</button>
+            <button class="text-button" id="reset-return" type="button">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="data-note shell" id="sanitisation-policy" aria-labelledby="data-title">
+        <p class="eyebrow">Public by design</p>
+        <h2 id="data-title">Patterns are visible.<br />Production systems stay private.</h2>
+        <div>
+          <p>
+            Every name, order, event and number in this showcase is invented.
+            The repository contains no private source history, customer records,
+            secrets, access tokens or production endpoints.
+          </p>
+          <a href="./SECURITY.md">Read the sanitisation policy <span class="arrow" aria-hidden="true">↗︎</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand inverse" href="https://drabyna.com/">DRABYNA<span>.</span></a>
+      <p>Connected systems. Clear decisions.</p>
+      <p class="footer-note">Illustrative demonstrations · No production data</p>
+    </footer>
+  </body>
+</html>
