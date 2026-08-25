@@ -108,6 +108,23 @@
           <ol class="event-log" id="event-log" aria-label="API event log">
             <li><time>READY</time><span>No production endpoint is connected.</span></li>
           </ol>
+
+          <div class="technical-grid" aria-label="Synthetic API technical data">
+            <article class="code-window">
+              <header>
+                <span><i aria-hidden="true"></i> POST /events/order.accepted</span>
+                <b>JSON</b>
+              </header>
+              <pre><code id="api-request-payload"></code></pre>
+            </article>
+            <article class="code-window">
+              <header>
+                <span><i aria-hidden="true"></i> Orchestration result</span>
+                <b id="api-result-code">PENDING</b>
+              </header>
+              <pre><code id="api-response-payload"></code></pre>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -151,6 +168,14 @@
             </p>
             <div class="evidence-stamp" id="evidence-stamp">AWAITING 3 VERIFIED SCANS</div>
           </aside>
+
+          <article class="code-window wide-code">
+            <header>
+              <span><i aria-hidden="true"></i> evidence_record.json</span>
+              <b>LIVE</b>
+            </header>
+            <pre><code id="evidence-payload"></code></pre>
+          </article>
         </div>
       </section>
 
@@ -188,6 +213,14 @@
             <p id="pulse-status" aria-live="polite">This adds one order and three verified SKUs.</p>
           </div>
         </div>
+
+        <article class="code-window standalone-code">
+          <header>
+            <span><i aria-hidden="true"></i> GET /operations/kpis?period=useful</span>
+            <b>200 OK</b>
+          </header>
+          <pre><code id="kpi-payload"></code></pre>
+        </article>
       </section>
 
       <section class="demo-section shell" id="returns-cycle" aria-labelledby="returns-title">
@@ -221,6 +254,14 @@
             <button class="action-button" id="advance-return" type="button">Advance workflow</button>
             <button class="text-button" id="reset-return" type="button">Reset</button>
           </div>
+
+          <article class="code-window return-code">
+            <header>
+              <span><i aria-hidden="true"></i> exchange_workflow.state</span>
+              <b>AUTOMATED</b>
+            </header>
+            <pre><code id="return-payload"></code></pre>
+          </article>
         </div>
       </section>
 

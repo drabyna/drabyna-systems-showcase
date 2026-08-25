@@ -90,6 +90,23 @@ a { color: inherit; }
 .event-log { margin: 28px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .event-log li { display: grid; grid-template-columns: 84px 1fr; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: .85rem; }
 .event-log time { color: var(--orange); font-family: var(--mono); }
+.technical-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 34px; }
+.code-window { min-width: 0; border: 1px solid #303633; background: #0b100e; color: #dfe8e2; box-shadow: 0 18px 42px rgba(21,21,21,.12); }
+.code-window header { min-height: 46px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid #29312d; color: #9ba8a1; font: 500 .66rem/1.35 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+.code-window header span { min-width: 0; display: flex; align-items: center; gap: 10px; overflow-wrap: anywhere; }
+.code-window header i { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(103,214,160,.08); }
+.code-window header b { flex: 0 0 auto; color: var(--orange); font-weight: 500; }
+.code-window pre { margin: 0; min-height: 226px; padding: 22px; overflow: auto; tab-size: 2; }
+.code-window code { font: 400 .76rem/1.75 var(--mono); white-space: pre; }
+.code-key { color: #83d4ff; }
+.code-string { color: #d8b47b; }
+.code-number { color: #78dea9; }
+.code-boolean { color: #ff7c56; }
+.code-null { color: #8d9791; }
+.wide-code { grid-column: 1 / -1; }
+.wide-code pre, .standalone-code pre, .return-code pre { min-height: 0; }
+.standalone-code { margin-top: 22px; }
+.return-code { margin-top: 34px; }
 .split-demo { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; }
 .order-heading, .return-summary, .pulse-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; }
 .order-heading h3, .return-summary h3 { margin: 8px 0 0; font-size: 2rem; }
@@ -148,6 +165,7 @@ a { color: inherit; }
   .flow-grid { grid-template-columns: repeat(4, minmax(210px, 1fr)); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 18px; }
   .flow-node { scroll-snap-align: start; }
   .flow-connector { display: none; }
+  .technical-grid { grid-template-columns: 1fr; }
   .split-demo { grid-template-columns: 1fr; }
   .return-steps { grid-template-columns: 1fr; }
   .return-steps li, .return-steps li + li { padding: 22px 0; border-left: 0; }
