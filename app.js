@@ -49,6 +49,7 @@ renderJson(apiResponsePayload, {
 
 runFlowButton?.addEventListener("click", async () => {
   runFlowButton.disabled = true;
+  runFlowButton.setAttribute("aria-busy", "true");
   eventLog.innerHTML = "";
   apiResultCode.textContent = "PROCESSING";
   flowNodes.forEach((node) => node.classList.remove("is-active", "is-complete"));
@@ -74,6 +75,7 @@ runFlowButton?.addEventListener("click", async () => {
   flowStatus.textContent = "Synthetic workflow complete. Every handoff is visible.";
   runFlowButton.textContent = "Run again";
   runFlowButton.disabled = false;
+  runFlowButton.setAttribute("aria-busy", "false");
   apiResultCode.textContent = "200 OK";
 });
 
@@ -81,6 +83,7 @@ let scanIndex = 0;
 const scanButton = document.querySelector("#scan-item");
 const resetScanButton = document.querySelector("#reset-scan");
 const scanCount = document.querySelector("#scan-count");
+const scanStatus = document.querySelector("#scan-status");
 const scanItems = [...document.querySelectorAll("[data-scan-item]")];
 const evidenceTitle = document.querySelector("#evidence-title");
 const evidenceCopy = document.querySelector("#evidence-copy");
@@ -120,7 +123,9 @@ function resetScan() {
     item.querySelector("b").textContent = "WAITING";
   });
   scanButton.disabled = false;
+  scanButton.classList.remove("is-complete");
   scanButton.textContent = "Scan next barcode";
+  scanStatus.textContent = "";
   evidenceTitle.textContent = "Evidence not yet complete.";
   evidenceCopy.textContent = "Each accepted barcode will be linked to this sample order.";
   evidenceStamp.textContent = "AWAITING 3 VERIFIED SCANS";
@@ -139,7 +144,9 @@ scanButton?.addEventListener("click", () => {
 
   if (scanIndex === scanItems.length) {
     scanButton.disabled = true;
+    scanButton.classList.add("is-complete");
     scanButton.textContent = "Pack verified";
+    scanStatus.textContent = "All 3 garments verified. Reset to try again.";
     evidenceTitle.textContent = "Evidence clip ready to share.";
     evidenceCopy.textContent = "Customer service can confirm that three garments were scanned and dispatched with this sample order.";
     evidenceStamp.textContent = "VERIFIED · 3 GARMENTS DISPATCHED";
@@ -190,23 +197,27 @@ completePackButton?.addEventListener("click", () => {
 let returnIndex = 0;
 const returnSteps = [...document.querySelectorAll("#return-steps li")];
 const returnProgress = document.querySelector("#return-progress");
+const returnStatus = document.querySelector("#return-status");
 const advanceReturn = document.querySelector("#advance-return");
 const resetReturn = document.querySelector("#reset-return");
 const returnPayload = document.querySelector("#return-payload");
 
 function renderReturn() {
+  const complete = returnIndex === returnSteps.length - 1;
   returnSteps.forEach((step, index) => {
-    step.classList.toggle("is-complete", index < returnIndex);
-    step.classList.toggle("is-active", index === returnIndex);
+    step.classList.toggle("is-complete", complete || index < returnIndex);
+    step.classList.toggle("is-active", !complete && index === returnIndex);
   });
   returnProgress.textContent = `${returnIndex + 1} of ${returnSteps.length}`;
-  advanceReturn.textContent = returnIndex === returnSteps.length - 1 ? "Workflow complete" : "Advance workflow";
-  advanceReturn.disabled = returnIndex === returnSteps.length - 1;
+  advanceReturn.textContent = complete ? "Workflow complete" : "Advance workflow";
+  advanceReturn.disabled = complete;
+  advanceReturn.classList.toggle("is-complete", complete);
+  returnStatus.textContent = complete ? "All 5 steps complete. Reset to run again." : "";
   renderJson(returnPayload, {
     return_id: "RET-083",
-    automation_status: returnIndex === returnSteps.length - 1 ? "complete" : "in_progress",
+    automation_status: complete ? "complete" : "in_progress",
     current_step: returnSteps[returnIndex].querySelector("b").textContent,
-    completed_steps: returnIndex,
+    completed_steps: complete ? returnSteps.length : returnIndex,
     customer_action_required: false,
   });
 }

@@ -25,8 +25,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./app.js" defer></script>
+    <link rel="preload" href="./assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./styles.css?v=20261123-completion-brand" />
+    <script src="./app.js?v=20261123-completion-brand" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to demonstrations</a>
@@ -157,6 +158,7 @@
             <div class="control-row">
               <button class="action-button" id="scan-item" type="button">Scan next barcode</button>
               <button class="text-button" id="reset-scan" type="button">Reset</button>
+              <p class="system-status completion-status" id="scan-status" role="status"></p>
             </div>
           </div>
 
@@ -253,6 +255,7 @@
           <div class="control-row">
             <button class="action-button" id="advance-return" type="button">Advance workflow</button>
             <button class="text-button" id="reset-return" type="button">Reset</button>
+            <p class="system-status completion-status" id="return-status" role="status"></p>
           </div>
 
           <article class="code-window return-code">
