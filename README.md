@@ -23,6 +23,16 @@ python3 -m http.server 4173
 
 Then open `http://localhost:4173`.
 
+## Brand and demo states
+
+The header and footer wordmarks use the same Geist Latin font, weight (850),
+spacing and orange dot as drabyna.com, checked on 23 November 2026. The font is
+served locally; its SIL Open Font License is in `assets/fonts/OFL.txt`.
+
+Only the asynchronous connection demo uses a busy cursor while running. Packing
+and returns finish with a green completion state and a normal cursor; Reset
+starts a fresh demonstration. A finished return marks all five steps complete.
+
 ## Publishing
 
 GitHub Pages deploys automatically whenever a commit is pushed to `main`. The deployment workflow is defined in `.github/workflows/pages.yml`.

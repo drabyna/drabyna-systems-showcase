@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Drabyna Geist";
+  src: url("./assets/fonts/geist-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   --cream: #f0e4d2;
   --paper: #f8efe3;
@@ -48,8 +56,8 @@ a { color: inherit; }
   top: 0;
   z-index: 20;
 }
-.brand { text-decoration: none; font-weight: 800; letter-spacing: -.05em; font-size: 1.1rem; }
-.brand span { color: var(--orange); }
+.brand { text-decoration: none; font-family: "Drabyna Geist", Arial, sans-serif; font-weight: 850; letter-spacing: -.04em; font-size: 1.05rem; line-height: 1.5; }
+.brand span { color: #ed5a24; }
 .site-header > p { margin: 0; font: 500 .76rem var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .return-link { justify-self: end; text-decoration: none; font-size: .92rem; font-weight: 600; }
 .arrow { font-family: Arial, Helvetica, sans-serif; font-variant-emoji: text; }
@@ -81,12 +89,17 @@ a { color: inherit; }
 .flow-connector::after { content: ">"; position: absolute; right: -3px; top: -8px; color: var(--muted); font: .75rem var(--mono); }
 .control-row { display: flex; align-items: center; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
 .action-button { border: 0; border-radius: 999px; background: var(--ink); color: #fff; padding: 15px 22px; cursor: pointer; font-weight: 700; white-space: nowrap; }
-.action-button:hover, .action-button:focus-visible { background: var(--orange); outline: none; }
-.action-button:disabled { opacity: .45; cursor: wait; }
+.action-button:not(:disabled):hover, .action-button:not(:disabled):focus-visible { background: var(--orange); outline: none; }
+.action-button:disabled { opacity: .45; cursor: default; }
+.action-button[aria-busy="true"] { cursor: wait; }
+.action-button.is-complete:disabled { opacity: 1; background: #176647; color: #fff; }
+.action-button.is-complete::before { content: "✓"; margin-right: .5em; }
 .action-button.light { background: #fff; color: var(--ink); }
-.action-button.light:hover, .action-button.light:focus-visible { background: var(--orange); color: #fff; }
+.action-button.light:not(:disabled):hover, .action-button.light:not(:disabled):focus-visible { background: var(--orange); color: #fff; }
 .text-button { border: 0; background: transparent; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; color: var(--muted); white-space: nowrap; }
 .system-status { margin: 0; color: var(--muted); font: .78rem/1.5 var(--mono); }
+.completion-status { flex-basis: 100%; color: #176647; }
+.completion-status:empty { display: none; }
 .event-log { margin: 28px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .event-log li { display: grid; grid-template-columns: 84px 1fr; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: .85rem; }
 .event-log time { color: var(--orange); font-family: var(--mono); }
